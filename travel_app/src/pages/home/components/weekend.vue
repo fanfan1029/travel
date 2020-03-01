@@ -2,7 +2,7 @@
   <div>
     <div class="title">周末去哪儿</div>
     <ul>
-      <li class="item border-bottom" v-for="item of recommendList">
+      <li class="item border-bottom" v-for="item of list">
         <div class="item-img-wrapper">
           <img class="item-img" :src= "item.imgUrl"/>
         </div>
@@ -20,30 +20,8 @@
 <script>
   export default {
     name: "HomeWeekend",
-    data(){
-      return{
-        recommendList: [{
-          id:'0001',
-          imgUrl:'https://imgs.qunarzz.com/sight/source/1812/4c/33ad31d025fef.jpg_r_640x214_7821b813.jpg',
-          title:'武隆天坑地缝国家地质公园',
-          desc:'4319条评论'
-        },{
-          id:'0002',
-          imgUrl:'https://imgs.qunarzz.com/sight/source/1812/4c/33ad31d025fef.jpg_r_640x214_7821b813.jpg',
-          title:'武隆天坑地缝国家地质公园',
-          desc:'4319条评论'
-        },{
-          id:'0003',
-          imgUrl:'https://imgs.qunarzz.com/sight/source/1812/4c/33ad31d025fef.jpg_r_640x214_7821b813.jpg',
-          title:'武隆天坑地缝国家地质公园',
-          desc:'4319条评论'
-        },{
-          id:'0004',
-          imgUrl:'https://imgs.qunarzz.com/sight/source/1812/4c/33ad31d025fef.jpg_r_640x214_7821b813.jpg',
-          title:'武隆天坑地缝国家地质公园',
-          desc:'4319条评论'
-        }]
-      }
+    props:{
+      list:Array
     }
   }
 </script>
@@ -55,12 +33,11 @@
     line-height .8rem
     background #eee
     text-indent .2rem
-    margin-top .2rem
     ellipsis()
   .item-img-wrapper
     overflow hidden
     height 0
-    padding-bottom 33.9%
+    padding-bottom 37.09%
     .item-img
       width 100%
    .item-info

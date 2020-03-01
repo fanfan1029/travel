@@ -2,7 +2,7 @@
   <div>
     <div class="title">热销推荐</div>
     <ul>
-      <li class="item border-bottom" v-for="item of recommendList">
+      <li class="item border-bottom" v-for="item of list">
 <!--        <div class=""item-img-wrapper>-->
           <img class="item-img" :src= "item.imgUrl"/>
 <!--        </div>-->
@@ -21,30 +21,8 @@
 <script>
     export default {
         name: "HomeRecommend",
-      data(){
-        return{
-          recommendList: [{
-            id:'0001',
-            imgUrl:'https://imgs.qunarzz.com/sight/p0/1505/be/be4802e10f3b3107.water.jpg_200x200_0e98aabe.jpg',
-            title:'武隆天坑地缝国家地质公园',
-            desc:'4319条评论'
-          },{
-            id:'0002',
-            imgUrl:'https://imgs.qunarzz.com/sight/p0/1505/be/be4802e10f3b3107.water.jpg_200x200_0e98aabe.jpg',
-            title:'武隆天坑地缝国家地质公园',
-            desc:'4319条评论'
-          },{
-            id:'0003',
-            imgUrl:'https://imgs.qunarzz.com/sight/p0/1505/be/be4802e10f3b3107.water.jpg_200x200_0e98aabe.jpg',
-            title:'武隆天坑地缝国家地质公园',
-            desc:'4319条评论'
-          },{
-            id:'0004',
-            imgUrl:'https://imgs.qunarzz.com/sight/p0/1505/be/be4802e10f3b3107.water.jpg_200x200_0e98aabe.jpg',
-            title:'武隆天坑地缝国家地质公园',
-            desc:'4319条评论'
-          }]
-        }
+      props:{
+          list:Array
       }
     }
 </script>
