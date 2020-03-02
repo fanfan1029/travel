@@ -17,10 +17,11 @@
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   export default {
     name:'Home_Header',
-    props:{
-      city:String
+    computed:{
+      ...mapState(['city'])//把vuex里的数据映射到vuex这个组件computed的计算属性里
     }
   }
 </script>
@@ -49,7 +50,8 @@
       border-radius .1rem
       color: #ccc
     .header-right
-      width 1.24rem
+      min-width 1.04rem
+      padding 0 .1rem
       float right
       text-align center
       color #ffffff

@@ -5,7 +5,7 @@
         <div class="title border-topbottom">当前城市</div>
         <div class="button-list">
           <div class="button-wrapper">
-            <div class="button">北京</div>
+            <div class="button">{{this.currentCity}}</div>
           </div>
         </div>
       </div>
@@ -15,6 +15,7 @@
           <div class="button-wrapper"
                v-for="item of hot"
                :key="item.id"
+               @click="handleCityClick(item.name)"
           >
             <div class="button">{{item.name}}</div>
           </div>
@@ -29,6 +30,7 @@
               v-for="innerItem of item"
               :key="innerItem.id"
               :ref="key"
+              @click="handleCityClick(innerItem.name)"
             >
               {{innerItem.name}}
             </div>
@@ -41,15 +43,28 @@
 
 <script>
   import Bscroll from 'better-scroll'
-    export default {
+  import {mapState} from 'vuex'
+  import {mapMutations} from 'vuex'
+
+  export default {
         name: "List",
       props:{
         hot:Array,
         cities:Object,
         letter:String
       },
-      mounted() {
-          this.scroll = new Bscroll(this.$refs.wrapper)
+      computed:{
+        ...mapState({
+          currentCity:'city'
+        })//把vuex里的数据映射到vuex这个组件computed的计算属性里
+      },
+      methods:{
+        handleCityClick(city){
+          this.$store.commit('changeCity',city)
+         // tihs.changeCity(city)
+          this.$router.push('/')
+        },
+        ...mapMutations(['changeCity'])
       },
       watch:{
           letter(){
@@ -58,12 +73,16 @@
               this.scroll.scrollToElement(element)
             }
           }
+      },
+      mounted() {
+        this.scroll = new Bscroll(this.$refs.wrapper)
       }
     }
 </script>
 
 <style lang="stylus" scoped>
   @import '~@/assets/styles/varibles.styl'
+
   .border-topbottom
     &:before
       border-color #ccc
