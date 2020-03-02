@@ -18,11 +18,14 @@ export default new Router({
       name: 'City',
       component: City
     },{
-      path: '/detail/0001',
+      path: '/detail/:id',
       name: 'Detail',
       component: Detail
     }
-  ]
+  ],
+  scrollBehavior(to, from, savePosition){
+    return { x: 0, y: 0}
+  }//每次做路由切换的时候 先进入显示的页面
 })
 //当用户访问根路径时 给用户返回的组件是helloworld这个组件
 //

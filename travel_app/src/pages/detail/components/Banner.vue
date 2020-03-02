@@ -2,33 +2,40 @@
   <div>
     <div class="banner" @click="handleBannerClick">
       <img class="banner-img"
-           src="//img1.qunarzz.com/sight/p0/1505/be/be4802e10f3b3107.water.jpg_600x330_9eb9410c.jpg"/>
+           :src="bannerImg"/>
       <div class="banner-info">
-        <div class="banner-title">武隆天坑地缝国家地质公园</div>
+        <div class="banner-title">{{this.sightName}}</div>
         <div class="banner-number">
           <span class="iconfont banner-icon">&#xe692;</span>
-          39
+          {{this.bannerImg.length}}
         </div>
       </div>
     </div>
-    <common-gallary
-      :imgs="imgs"
-      v-show="showGallary"
-      @close="handleGallaryClose"
+    <fade-animation>
+      <common-gallary
+        :imgs="bannerImgs"
+        v-show="showGallary"
+        @close="handleGallaryClose"
+      ></common-gallary>
+    </fade-animation>
 
-    ></common-gallary>
   </div>
 </template>
 
 <script>
   import CommonGallary from 'common/gallary/Gallary'
+  import FadeAnimation from 'common/fade/FadeAnimation'
+
   export default {
     name: "DetailBanner",
+    props:{
+      sightName:String,
+      bannerImg:String,
+      bannerImgs:Array
+    },
     data(){
       return{
-        showGallary:false,
-        imgs:['http://img1.qunarzz.com/sight/p0/1505/be/be4802e10f3b3107.water.jpg_r_800x800_0ca067d7.jpg',
-          'http://img1.qunarzz.com/sight/p0/201401/17/72e8ef351fc2129b8e1911fc9d8a6fc3.jpg_r_800x800_0cf2eda1.jpg']
+        showGallary:false
       }
     },
     methods:{
@@ -40,7 +47,8 @@
       }
     },
     components:{
-      CommonGallary
+      CommonGallary,
+      FadeAnimation
     }
   }
 </script>
@@ -76,6 +84,4 @@
         font-size .24rem
         .banner-icon
           font-size .24rem
-
-
 </style>
